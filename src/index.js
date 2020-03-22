@@ -7,6 +7,7 @@ import "./index.css";
 // Components
 import ContactList from "./Components/ContactList/ContactList";
 import AddContact from "./Components/AddContact/AddContact";
+import Header from "./Components/Header/Header";
 
 class App extends React.Component {
   state = {
@@ -108,6 +109,7 @@ class App extends React.Component {
             className="panel-collapse collapse show"
             aria-expanded="true"
           >
+            <Header />
             <Router>
               <Switch>
                 <Route
@@ -128,14 +130,6 @@ class App extends React.Component {
                 />
               </Switch>
             </Router>
-
-            {/* <h1>Contact list app</h1>
-            <ContactList
-              List={this.state.List}
-              onStarChange={this.onStarChange}
-              onDeleteContact={this.onDeleteContact}
-            />
-            <AddContact onAddContact={this.onAddContact} /> */}
           </div>
         </div>
       </div>
