@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import "./ContactItem.css";
 
 class ContactItem extends Component {
@@ -32,11 +33,11 @@ class ContactItem extends Component {
     const URL = `https://api.randomuser.me/portraits/${gender}/${avatar}.jpg`;
 
     if (this.props.star) {
-      var favoriteStyle = "fa fa-star fa-1x";
+      var favoriteStyle = "fa fa-star fa-2x";
     } else {
-      var favoriteStyle = "fa fa-star-o fa-1x";
+      var favoriteStyle = "fa fa-star-o fa-2x";
     }
-    console.log("Contact id props => ", this.props.id);
+    //console.log("Contact id props => ", this.props.id);
 
     return (
       <Fragment>
@@ -51,10 +52,23 @@ class ContactItem extends Component {
             </div>
             <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
               <span
-                className="fa fa-trash fa-2x text-success float-right pulse"
+                className="fa fa-trash fa-2x text-danger float-right pulse"
                 title="Delete"
                 onClick={this.props.onDeleteContact}
               ></span>
+              <Link
+                to="/edit"
+                className="fa fa-edit fa-2x text-success float-right pulse"
+                title="Edit"
+                onClick={this.props.onEditContact}
+              ></Link>
+              <span className=" float-right pulse">
+                <i
+                  className={favoriteStyle}
+                  aria-hidden="true"
+                  onClick={this.props.onStarChange}
+                ></i>
+              </span>
               <label className="name lead">{name}</label>
               <br />
               <span
@@ -62,20 +76,14 @@ class ContactItem extends Component {
                 data-toggle="tooltip"
                 title=""
                 data-original-title={address}
-              >
-                <i
-                  className={favoriteStyle}
-                  aria-hidden="true"
-                  onClick={this.props.onStarChange}
-                ></i>
-              </span>
+              ></span>
               <span className="text-muted">{address}</span>
               <br />
               <span
                 className="fa fa-phone fa-fw text-muted"
                 data-toggle="tooltip"
                 title=""
-                data-original-title="(870) 288-4149"
+                data-original-title={phone}
               ></span>
               <span className="text-muted small">{phone}</span>
               <br />

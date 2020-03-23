@@ -1,17 +1,22 @@
+  
 import React from "react";
 import "./ContactList.css";
 
 // Component
 import ContactItem from "./ContactListItem/ContactItem";
 
-const ContactList = ({ List, onStarChange, onDeleteContact }) => {
+const ContactList = ({
+  List,
+  onStarChange,
+  onDeleteContact,
+  onEditContact
+}) => {
   // console.log("ContactList => ", List);
 
   const item = List.map(item => {
     return (
       <ContactItem
         key={item.id}
-        id={item.id}
         name={item.name}
         address={item.address}
         avatar={item.avatar}
@@ -21,6 +26,7 @@ const ContactList = ({ List, onStarChange, onDeleteContact }) => {
         star={item.star}
         onStarChange={() => onStarChange(item.id)}
         onDeleteContact={() => onDeleteContact(item.id)}
+        onEditContact={() => onEditContact(item.id)}
       />
     );
   });
